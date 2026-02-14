@@ -68,6 +68,14 @@ class Ticket extends Model
     }
 
     /**
+     * Relasi: Ticket has many Comments
+     */
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    /**
      * Scope untuk filter tiket berdasarkan status
      * 
      * Penggunaan: Ticket::status('open')->get()

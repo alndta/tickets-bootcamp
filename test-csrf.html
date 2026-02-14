@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSRF Attack Simulation</title>
+    <style>
+        body { font-family: sans-serif; padding: 40px; text-align: center; }
+        .box { border: 2px dashed red; padding: 20px; display: inline-block; background: #fff0f0; }
+        button { padding: 10px 20px; font-size: 16px; background: red; color: white; border: none; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1>⚠️ CSRF Attack Simulation</h1>
+        <p>Halaman ini ceritanya adalah <strong>Website Berbahaya</strong> (Attacker).</p>
+        <p>Saat kamu klik tombol di bawah, website ini akan mencoba mengirim data ke aplikasi kamu secara diam-diam.</p>
+        
+        <!-- Form ini menargetkan endpoint aplikasi kamu -->
+        <form action="http://localhost:8000/security-testing/csrf" method="POST">
+            <!-- Tidak ada CSRF Token di sini -->
+            <input type="hidden" name="test_data" value="DATA DARI HACKER!">
+            
+            <button type="submit">🚨 KLIK SAYA (Simulasi Serangan)</button>
+        </form>
+    </div>
+
+    <p style="margin-top: 20px">
+        <strong>Expected Result:</strong><br>
+        Jika CSRF Protection aktif, kamu akan melihat error <strong>419 Page Expired</strong>.
+    </p>
+</body>
+</html>
